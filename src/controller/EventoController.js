@@ -52,26 +52,20 @@ const EventController = {
             const{id} = req.params;
             const {nome,data,localizacao} = req.body;
 
-            console.log("Atualizando o Evento");
-            console.log({id});
-            console.log({nome,data,localizacao});
+            const evento = await Event.findByPk(id);
 
-            const eventoUpdate = await Evento.findByPk(id);
-            if(eventoUpdate == null){
-                return res.status(200).json({msg: 'Evento atualizado com sucesso!'});
+            if(!evento){
+                return res.status(404).json({
+                    msg : "Evento nao encontrado"
+                })
             }
 
-            const update = await eventoUpdate.update({
-                nome,data,localizacao
-            });
-            if(update){
-                return res.status(200).json({
-                    msg:"Evento atualizaco com sucesso!"
-                });
-            }
-            return res.status(500).json({
-                msg:"Erro ao atualizar"
-            });
+            await evento.update({nome,data,localizacao})
+
+            return res.status(200).json({
+                msg : "Evento axado"
+            })
+
         } catch (error) {
             console.log(error);
             return res.status(500).json({msg:"Calma Calabreso aquele meme lá KKKKKKKKK"});
@@ -82,7 +76,7 @@ const EventController = {
         try {
             const {id} = req.params;
 
-            const eventoFinded = await Evento.findByPk(id);
+            const eventoFinded = await Event.findByPk(id);
 
             if(!eventoFinded){
                 return res.status (400).json({
