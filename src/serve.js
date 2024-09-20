@@ -23,11 +23,11 @@ sequelize
     })
 
     then(() =>{
-        app.listen(process.env.PORT == null ? 8080 : process.env.PORT () => {
-            console.log("################");
+        app.listen(process.env.PORT == null ? 8080 : process.env.PORT, () => {
+            console.log("######################");
             console.log("Rodando no servidor 8080");
-            console.log("################")
-        })
+            console.log("######################")
+        });
     })
 
     .catch((error) => {
