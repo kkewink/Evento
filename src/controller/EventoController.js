@@ -88,7 +88,7 @@ const EventController = {
                 msg: "deletou pai!",
             })
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return res.status(500).json({ msg: "Bora bill Bora suporte do bill aquele meme là KKKKK"});
         }
     },

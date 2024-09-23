@@ -1,6 +1,7 @@
 const {DataTypes} = require("sequelize");
 const sequelize =  require("../config/config");
-const Partic = sequelize.define('partic', {
+const Event = require("../models/Event");
+const Participante = sequelize.define('partic', {
     nome:{
         type:DataTypes.STRING,
         allowNull:false
@@ -10,8 +11,13 @@ const Partic = sequelize.define('partic', {
         allowNull:false
     },
     eventoID:{
-        type:asd
+        type:DataTypes.TINYINT,
+        allowNull:false,
+        references:{
+            model:Event,
+            key:"id"
+        }
     },
 });
 
-module.exports = partic;
+module.exports = Participante;
