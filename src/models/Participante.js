@@ -10,9 +10,10 @@ const Participante = sequelize.define('partic', {
         type:DataTypes.STRING,
         allowNull:false
     },
-    eventoID:{
-        type:DataTypes.TINYINT,
+    evento_id:{
+        type:DataTypes.INTEGER,
         allowNull:false,
+        onDelete : 'CASCADE',
         references:{
             model:Event,
             key:"id"

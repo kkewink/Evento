@@ -15,6 +15,10 @@ router.get('/:id', (req,res) =>{
     EventController.getOne(req,res);
 });
 
+router.get('/:id/participante', (req,res) =>{
+    EventController.getPartic(req,res);
+});
+
 router.put('/:id', (req,res) =>{
     EventController.update(req,res);
 });
@@ -22,5 +26,7 @@ router.put('/:id', (req,res) =>{
 router.delete('/:id',(req,res) =>{
     EventController.delete(req,res);
 });
+
+
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const {Router} = require("express");
 const ParticipanteController = require("../controller/ParticipanteController");
-const { route } = require("./routerEvent");
+// const { route } = require("./routerEvent");
 
 const router = Router();
 
@@ -10,6 +10,10 @@ router.post('/', (req,res) =>{
 
 router.get('/' , (req,res) =>{
     ParticipanteController.getAll(req,res);
+});
+
+router.get('/por-evento/:evento_id', (req,res) =>{
+    ParticipanteController.getEvent(req,res);
 });
 
 router.get('/:id', (req,res) =>{
@@ -24,4 +28,4 @@ router.delete('/:id', (req,res)=>{
     ParticipanteController.delete(req,res);
 });
 
-module.exports = route;
+module.exports = router;

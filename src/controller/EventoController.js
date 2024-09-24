@@ -1,4 +1,5 @@
 const Event = require("../models/Event");
+const Participante = require("../models/Participante");
 
 const EventController = {
     create: async(req, res) =>{
@@ -25,6 +26,20 @@ const EventController = {
         } catch (error) {
             console.error(error);
             return res.status(500).json({msg:" Esse Erro todo amostradinho aquele meme la"});
+        }
+    },
+
+    getPartic: async(req,res)=>{
+        try {
+         const {id} = req.params
+         const participantes = await Participante.findAll({where : {evento_id : id}});
+
+         return res.status(200).json({
+            participantes
+         })
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ msg:'Chame o doido'});
         }
     },
     
@@ -63,7 +78,7 @@ const EventController = {
             await evento.update({nome,data,localizacao})
 
             return res.status(200).json({
-                msg : "Evento axado"
+                msg : "Evento Atualizado"
             })
 
         } catch (error) {
