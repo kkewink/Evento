@@ -11,9 +11,9 @@ const ParticipanteController = {
             const existePart = await Participante.findOne({where : {email : email}})
 
             if(existePart){
-                return res.status(5400).json(
-                    
-                )
+                return res.status(500).json({
+                    msg: 'Email ja cadastrado muda ai parça',
+                })
             }
             console.log(nome,email,evento_id)
 
